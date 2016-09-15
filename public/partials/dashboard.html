@@ -1,3 +1,32 @@
 <div ng-controller='dashboardController'>
 	<h2>Welcome {{user.name}}</h2>
+	<a ng-click='logout()'>Logout</a>
+	<form role='form'>
+		<div class='form-group'>
+			<input type='hidden' ng-value='newBucket.id=user._id'
+			<!-- <label for='title'></label> -->
+			<input type='text' ng-model='newBucket.title' placeholder='Title'>
+			<input type='text' ng-model='newBucket.description' placeholder='Description'>
+<!-- 			<select ng-model='newBucket.user'>
+				<option ng-repeat='name in allUsers'>{{name.name}}</option>
+			</select> -->
+			<button ng-click='createList()' class='btn'>Add to List</button>
+		</div>
+	</form>
+	<h3>Before I die I want to....</h3>
+	<table class='table'>
+		<thead></thead>
+		<tbody>
+			<tr ng-repeat='item in userList'>
+				<td>checkbox</td>
+				<td>{{item.title}}</td>
+				<td><{{item.description}}/td>
+				<td>{{item.created_at}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3>Other Users (Click to view profile)</h3>
+	<ul>
+		<li ng-repeat='name in allUsers'>{{name.name}}</li>
+	</ul>
 </div>
