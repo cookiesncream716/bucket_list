@@ -22,12 +22,28 @@ module.exports = (function(){
 			})
 		},
 		show: function(req, res){
-			User.find({}, function(err, result){
-				// console.log(result);
+			console.log('show');
+			console.log(req.params.id);
+			User.findOne({_id: req.params.id}).populate('list').exec(function(err, user){
 				if(err){
+					console.log('could not find user' + err);
+					var err = {error: 'Error finding User'}
+					res.json(error);
+				} else{
+					console.log('found user')
+					console.log(user);
+					res.json(user);
+				}
+			})
+		},
+		showAll: function(req, res){
+			console.log('showAll');
+			User.find({}, function(err, results){
+				if(err){
+					console.log('err finding users');
 					console.log(err);
 				} else{
-					res.json(result);
+					res.json(results);
 				}
 			})
 		}

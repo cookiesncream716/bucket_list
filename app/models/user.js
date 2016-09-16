@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new mongoose.Schema({
 	name: {type: String, required: true},
-	_list: [{type: Schema.Types.ObjectId, ref: 'List'}],
+	list: [{type: Schema.Types.ObjectId, ref: 'List'}],
 	created_at: {type: Date, default: new Date}
 });
 

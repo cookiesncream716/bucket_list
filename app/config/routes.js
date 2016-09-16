@@ -7,9 +7,15 @@ module.exports = function(app){
 		users.create(req, res)
 	});
 	app.get('/users', function(req, res){
+		users.showAll(req, res)
+	});
+	app.post('/users/:id', function(req, res){
 		users.show(req, res)
 	});
-	app.get('/lists/:id', function(req, res){
-		lists.showOne(req, res)
+	// app.get('/lists/:id', function(req, res){
+	// 	lists.showOne(req, res)
+	// });
+	app.post('/lists', function(req, res){
+		lists.create(req, res)
 	});
 }

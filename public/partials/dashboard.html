@@ -1,9 +1,9 @@
 <div ng-controller='dashboardController'>
 	<h2>Welcome {{user.name}}</h2>
-	<a ng-click='logout()'>Logout</a>
+	<a ng-click='logout()'>Exit</a>
 	<form role='form'>
 		<div class='form-group'>
-			<input type='hidden' ng-value='newBucket.id=user._id'
+			<input type='hidden' ng-value='newBucket.id=user._id'>
 			<!-- <label for='title'></label> -->
 			<input type='text' ng-model='newBucket.title' placeholder='Title'>
 			<input type='text' ng-model='newBucket.description' placeholder='Description'>
@@ -15,13 +15,20 @@
 	</form>
 	<h3>Before I die I want to....</h3>
 	<table class='table'>
-		<thead></thead>
+		<thead>
+			<tr>
+				<th>Completed</th>
+				<th>Title</th>
+				<th>Description</th>
+				<th>Date Added</th>
+			</tr>
+		</thead>
 		<tbody>
-			<tr ng-repeat='item in userList'>
+			<tr ng-repeat='item in user.list'>
 				<td>checkbox</td>
 				<td>{{item.title}}</td>
-				<td><{{item.description}}/td>
-				<td>{{item.created_at}}</td>
+				<td>{{item.description}}</td>
+				<td>{{item.created_at | date: 'MMMM d, yyyy'}}</td>
 			</tr>
 		</tbody>
 	</table>
